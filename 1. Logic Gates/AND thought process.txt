@@ -1,0 +1,2 @@
+Thought process: 
+AND gate is logic AND followed by NOT. So, we can just combine these gates.
