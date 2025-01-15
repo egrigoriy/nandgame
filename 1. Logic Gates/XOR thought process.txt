@@ -1,0 +1,25 @@
+Thought process: 
+
+a NAND b = NOT(a AND b)
+
+XOR truth table:
+
+a  | b  | out
+---------------
+0  | 0  |  0
+0  | 1  |  1
+1  | 0  |  1 
+1  | 1  |  0
+
+We can use double negation and try to express operations only in AND, NAND and NOT, using De Morgan's laws.
+
+
+a XOR b = (a AND NOT(b)) OR (NOT(a) AND b) = 
+
+NOT(NOT((a AND NOT(b)) OR (NOT(a) AND b)) = 
+
+NOT((NOT(a AND NOT(b)) AND NOT(NOT(a) AND b)) = 
+
+NOT((a NAND NOT(b)) AND (NOT(a) NAND b) =
+
+(a NAND NOT(b)) NAND (NOT(a) NAND b)
