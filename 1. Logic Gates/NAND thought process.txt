@@ -1,0 +1,22 @@
+Thought process: 
+From NAND truth table one can observe that in most cases output seems insensible to a and b. 
+Thus, it is resonable to forward to the output the power(always 1) with a relay (default on).
+However, this relay out must be set to 0 when a and b are 1.
+This can be achieved by setting in such a case its c-input to 1.
+We can see from relay (default off) truth table, that we can this element as logic AND gate.
+
+relay (default on) truth table:
+in  | c  | out
+---------------
+0   | 0  |  0
+0   | 1  |  0
+1   | 0  |  1 // default on
+1   | 1  |  0
+
+relay (default off) truth table:
+in  | c  | out
+---------------
+0   | 0  |  0 // default off
+0   | 1  |  0 // default off
+1   | 0  |  0 // default off
+1   | 1  |  1 
