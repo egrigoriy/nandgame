@@ -1,0 +1,250 @@
+{
+  "NandGame:Levels:OR": {
+    "nodes": [
+      {
+        "type": "INV",
+        "x": 45.888916015625,
+        "y": 500.00001525878906,
+        "id": "0"
+      },
+      {
+        "type": "INV",
+        "x": 170.888916015625,
+        "y": 499.00001525878906,
+        "id": "1"
+      },
+      {
+        "type": "NAND",
+        "x": 104.888916015625,
+        "y": 368.00001525878906,
+        "id": "2"
+      }
+    ],
+    "connections": [
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "0",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "1"
+        },
+        "target": {
+          "nodeId": "1",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "0",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "2",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "1",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "2",
+          "connectorId": "1"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "2",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "output",
+          "connectorId": "0"
+        }
+      }
+    ]
+  },
+  "NandGame:Levels:RELAY_NAND": {
+    "nodes": [
+      {
+        "type": "RELAY-ON",
+        "x": 85.79998779296875,
+        "y": 151,
+        "id": "0"
+      },
+      {
+        "type": "RELAY-OFF",
+        "x": 67.79998779296875,
+        "y": 311,
+        "id": "1"
+      }
+    ],
+    "connections": [
+      {
+        "source": {
+          "nodeId": "1",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "0",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "2"
+        },
+        "target": {
+          "nodeId": "0",
+          "connectorId": "1"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "1",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "1"
+        },
+        "target": {
+          "nodeId": "1",
+          "connectorId": "1"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "0",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "output",
+          "connectorId": "0"
+        }
+      }
+    ]
+  },
+  "NandGame:Levels:AND": {
+    "nodes": [
+      {
+        "type": "NAND",
+        "x": 113.888916015625,
+        "y": 472.00001525878906,
+        "id": "0"
+      },
+      {
+        "type": "INV",
+        "x": 112.888916015625,
+        "y": 370.00001525878906,
+        "id": "1"
+      }
+    ],
+    "connections": [
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "0",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "1"
+        },
+        "target": {
+          "nodeId": "0",
+          "connectorId": "1"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "0",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "1",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "1",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "output",
+          "connectorId": "0"
+        }
+      }
+    ]
+  },
+  "NandGame:Levels:INV": {
+    "nodes": [
+      {
+        "type": "NAND",
+        "x": 79.88888549804688,
+        "y": 437.00001525878906,
+        "id": "0"
+      }
+    ],
+    "connections": [
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "0",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "0",
+          "connectorId": "1"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "0",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "output",
+          "connectorId": "0"
+        }
+      }
+    ]
+  },
+  "NandGame:Levels": [
+    "RELAY_NAND",
+    "INV",
+    "AND",
+    "OR"
+  ]
+}

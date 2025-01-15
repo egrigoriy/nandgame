@@ -1,0 +1,14 @@
+Thought process: 
+
+OR truth table:
+
+a  | b  | out
+---------------
+0  | 0  |  0
+0  | 1  |  1
+1  | 0  |  1 
+1  | 1  |  1
+
+We can use double negation and try to express operations only in AND, NAND and NOT, using De Morgan's laws.
+
+a OR b = NOT(NOT(a OR b)) = NOT(NOT(a) AND NOT(b)) = NOT(a) NAND NOT(b)
