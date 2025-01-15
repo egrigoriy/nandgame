@@ -1,0 +1,43 @@
+Thought process: 
+
+Gates cost review:
+
+gate  | cost in NANDS
+---------------------
+NAND  | 1 
+NOT   | 1
+AND   | 2
+OR    | 3 
+XOR   | 5 
+
+Half Adder truth table:
+
+a  | b  | h  | l
+-------------------
+0  | 0  |  0 |  0
+0  | 1  |  0 |  1
+1  | 0  |  0 |  1
+1  | 1  |  1 |  0
+
+The obvious solution is:
+
+h = a AND b
+l = a XOR b
+
+However, this solution requires 7 NAND gates and it is far from opimal.
+
+h = a AND b = NOT (a NAND b)
+
+We can note that:
+
+(a NAND b) NAND a = a -> b only 0 for a=1 and b=0 (Material Conditional)
+(a NAND b) NAND b = b -> a only 0 for b=1 and a=0 (Material Conditional)
+
+a  | b  | a NAND b | c = a NAND (a NAND b) | d = (a NAND b) NAND b | c NAND d
+----------------------------------------------------------------------------
+0  | 0  |  1       |  1                    |  1                    |  0
+0  | 1  |  1       |  1                    |  0                    |  1
+1  | 0  |  1       |  0                    |  1                    |  1
+1  | 1  |  0       |  1                    |  1                    |  0
+
+
