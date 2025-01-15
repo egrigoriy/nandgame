@@ -1,0 +1,13 @@
+Thought process: 
+
+NAND truth table:
+
+a  | b  | out
+---------------
+0  | 0  |  1
+0  | 1  |  1
+1  | 0  |  1 
+1  | 1  |  0
+
+From NAND truth table one can observe that out is 0 when a and b are both 1, and out is 1 when a and b are both 0.
+Thus, 2 input gate can be used as NOT if level to be inverted is fed to both NAND inputs.
