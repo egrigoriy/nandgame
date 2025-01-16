@@ -141,6 +141,110 @@
       }
     ]
   },
+  "NandGame:Levels:FULLADD": {
+    "nodes": [
+      {
+        "type": "HALFADD",
+        "x": 75.888916015625,
+        "y": 455.00001525878906,
+        "id": "0"
+      },
+      {
+        "type": "HALFADD",
+        "x": 103.888916015625,
+        "y": 344.00001525878906,
+        "id": "1"
+      },
+      {
+        "type": "OR",
+        "x": 77.88888549804688,
+        "y": 220.00001525878906,
+        "id": "2"
+      }
+    ],
+    "connections": [
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "0",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "1"
+        },
+        "target": {
+          "nodeId": "0",
+          "connectorId": "1"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "0",
+          "connectorId": "1"
+        },
+        "target": {
+          "nodeId": "1",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "2"
+        },
+        "target": {
+          "nodeId": "1",
+          "connectorId": "1"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "0",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "2",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "1",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "2",
+          "connectorId": "1"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "2",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "output",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "1",
+          "connectorId": "1"
+        },
+        "target": {
+          "nodeId": "output",
+          "connectorId": "1"
+        }
+      }
+    ]
+  },
   "NandGame:Levels:HALFADD": {
     "nodes": [
       {
@@ -519,6 +623,7 @@
     "AND",
     "OR",
     "XOR",
-    "HALFADD"
+    "HALFADD",
+    "FULLADD"
   ]
 }
