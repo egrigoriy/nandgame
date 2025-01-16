@@ -1,0 +1,12 @@
+Thought process: 
+
+It was hard to find how to combine half-adders and get correct sum and carry.
+So, I finally got it.
+
+In order to get the LSB of a + b + c, we must add all inputs.
+In fact, XOR gives us result which is modulo 2, thus we do not carry about overflow.
+Hence, we combine a and b with a half-adder, then combine obtained LSB with c with another half-adder.
+LSB pin of the second half-adder provides the desired LSB for a + b + c.
+
+MSB of a + b + c, i.e. overflow or carry, is obtained in case of any of overflows obtained from both half-adders.
+Thus, we can use OR to combine these H outputs and obtain the desired MSB (H) for a + b + c.
