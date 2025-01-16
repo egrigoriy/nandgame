@@ -23,3 +23,24 @@ NOT((NOT(a AND NOT(b)) AND NOT(NOT(a) AND b)) =
 NOT((a NAND NOT(b)) AND (NOT(a) NAND b) =
 
 (a NAND NOT(b)) NAND (NOT(a) NAND b)
+
+This solution uses 5 NAND gates.
+However, shorter solution exists.
+
+We can note that:
+
+(a NAND b) NAND a = a -> b only 0 for a=1 and b=0 (Material Conditional)
+(a NAND b) NAND b = b -> a only 0 for b=1 and a=0 (Material Conditional)
+
+a  | b  | a NAND b | c = a NAND (a NAND b) | d = (a NAND b) NAND b | c NAND d
+----------------------------------------------------------------------------
+0  | 0  |  1       |  1                    |  1                    |  0
+0  | 1  |  1       |  1                    |  0                    |  1
+1  | 0  |  1       |  0                    |  1                    |  1
+1  | 1  |  0       |  1                    |  1                    |  0
+
+
+Thus,
+a XOR b = c NAND d = ((a NAND b) NAND a) NAND ((a NAND b) NAND b)
+
+This solution is optimal and uses only 4 NAND gates as (a NAND b) is reused.
