@@ -1,0 +1,5 @@
+Thought process: 
+
+Should output 1 if and only if all bits in the input are 0.
+We can OR input bits pair by pair until we get OR of all bits. The result will be 0 only if all input bits are 0, otherwise 1.
+At the and we just negate the result to obtain and indicator 1-bit indicator for Equal To Zero input.
