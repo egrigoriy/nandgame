@@ -1,0 +1,6 @@
+Thought process: 
+
+First stage full-adder adds LSB bits and the input carry.
+Next stage full-adder adds next bits togheter with output carry from the first full-adder stage.
+And so on until all bits of input numbers are added.
+The last stage full-adder provides the MSB and the total carry of the sum.
