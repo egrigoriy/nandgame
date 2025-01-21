@@ -1,0 +1,8 @@
+Thought process: 
+
+Substract 2 numbers is same as to add the first with the negated second:
+
+a - b = a + (-b)
+
+Thus, we can use a 16-bit adder, where the second operand is negated second input number.
+Negation of a number is achived by all bit negation followed by addition of 1.
