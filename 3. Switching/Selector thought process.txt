@@ -1,0 +1,9 @@
+Thought process: 
+
+out = (NOT(s) AND d0) OR (s  AND d1)
+
+By appliyng DeMorgan's law one obtains:
+
+out = ((NOT s) NAND d0) NAND (s NAND d1)
+
+Only 4 NAND gates.
