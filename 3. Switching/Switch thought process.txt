@@ -1,0 +1,12 @@
+Thought process: 
+
+A switch component channels a data bit through one of two output channels.
+
+s (selector) determines if the d (data) bit is dispatched through c1 or c0.
+
+Thus, by DeMorgan's laws:
+
+c0 = (NOT s) AND d = (s NAND d) AND d         (material conditional)
+c1 = s AND d = NOT (s NAND d)
+
+Signal (s NAND d) is reused. The result is ONLY 4 NAND gates
