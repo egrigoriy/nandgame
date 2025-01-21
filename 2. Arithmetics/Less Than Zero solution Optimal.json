@@ -1,4 +1,36 @@
 {
+  "NandGame:Levels:SIGN": {
+    "nodes": [
+      {
+        "type": "SPLIT16",
+        "x": 104.888916015625,
+        "y": 459.00001525878906,
+        "id": "0"
+      }
+    ],
+    "connections": [
+      {
+        "source": {
+          "nodeId": "input",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "0",
+          "connectorId": "0"
+        }
+      },
+      {
+        "source": {
+          "nodeId": "0",
+          "connectorId": "0"
+        },
+        "target": {
+          "nodeId": "output",
+          "connectorId": "0"
+        }
+      }
+    ]
+  },
   "NandGame:Levels:OR": {
     "nodes": [
       {
@@ -800,7 +832,8 @@
     "ADD2",
     "INC",
     "SUB",
-    "ISZERO"
+    "ISZERO",
+    "SIGN"
   ],
   "NandGame:Levels:SUB": {
     "nodes": [
