@@ -1,0 +1,20 @@
+Thought process: 
+
+D Latch
+
+A D Latch (data latch) component holds a single bit
+
+When st (store) is 1, the value on d is held and emitted.
+
+When st is 0, the value of d is ignored, and the previously held value is still emitted.
+
+Input	Output
+st	d		
+1	0	0
+1	1	1
+0	1	Same as previous
+0	0	Same as previous
+The initial output (before st is set first time) is unspecified, i.e. any value is allowed.
+
+The behaviour is very similar to a SELECT gate: we "select" an input value at d1 with st (store) input.
+When st (store) = 0, we select the previous, so output is fed back to d0 input of the select gate.
