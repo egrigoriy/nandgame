@@ -1,0 +1,38 @@
+Thought process: 
+
+LogCondition
+
+The three flags indicate three possible conditions for the number X:
+
+Flag	Condition
+lt	  Less than zero
+eq	  Equal to zero
+gt	  Greater than zero
+
+If the condition for the input flags is true for given input number then output is 1.
+
+The flags can be combined so:
+
+Flags	    Output 1 when
+lt	eq	gt	
+0	0	0	Never
+0	0	1	X > 0
+0	1	0	X = 0
+0	1	1	X ≥ 0
+1	0	0	X < 0
+1	0	1	X ≠ 0
+1	1	0	X ≤ 0
+1	1	1	Always
+
+We have 2 components to test the input value: IsNeg (NG) and IsZero (ZR).
+
+The simples solution is to multiply logicaly each flag with the test of the input value and add the obtained results.
+
+out = (lt AND NG) OR (eq AND ZR) OR (gt AND (NOT (NG OR ZR)))
+
+However, this brings us to a non optimal solution with 8 components (62 NAND gates in total).
+
+By appliyng DeMorgan's laws one can reduce to optimal solution of 8 components (56 NAND gates in total).
+
+out = ((lt NAND NG) AND (eq NAND ZR)) NAND (gt NAND (NG nor ZR)
+
