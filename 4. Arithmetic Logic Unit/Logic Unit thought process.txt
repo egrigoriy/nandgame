@@ -1,0 +1,37 @@
+Thought process: 
+
+Logic Unit
+
+The two bit-flags op0 and op1 select which out of four operations are performed on the two 16-bit inputs X and Y.
+
+op1	op0	output
+0	0	X and Y
+0	1	X or Y
+1	0	X xor Y
+1	1	invert X
+
+We have 4 basic operations and we need to SELECT one of them using 2 bits (op1 and op0).
+
+As the SELECT16 element has only 1 select input and 2 data inputs, we need to build a cascade.
+We split operations on 2 groups and in the first level of the cascade, we use op0 to select the operation from the group to go to second level of cascade.
+In the second level op1 is used to select which group's output to be delivered to outside.
+
+Level 1: We split operations in 2 groups:
+GROUP 1:
+op0	output
+0	X and Y
+1	X or Y
+
+GROUP 2:
+op0	output
+0	X xor Y
+1	invert X
+
+Level 2: op2 selects which group output to be delivered to outside. 
+
+op1	op0	          output
+0	GROUP1	X and Y | X or Y
+1	GROUP2	X xor Y | invert X
+
+
+
