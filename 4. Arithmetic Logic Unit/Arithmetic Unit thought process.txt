@@ -1,0 +1,20 @@
+Thought process: 
+
+Arithmetic Unit
+
+The two bit-flags op0, op1 determine which of the following four arithmetic operations are performed on the two 16-bit inputs X and Y:
+
+op1	op0	output
+0	0	X + Y
+1	0	X - Y
+0	1	X + 1
+1	1	X - 1
+
+One can observe that op0 selects second operand between Y and 1 and op2 selects the operation to perform between ADDITION and SUBSTRACTION.
+Thus, we need 2 SELECTOR16 and ADD16 and SUB16, as value 1 as well.
+The last one is obtained by inverting 0 single-bit.
+
+
+
+
+
