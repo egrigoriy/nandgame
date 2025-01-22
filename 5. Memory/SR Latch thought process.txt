@@ -1,0 +1,46 @@
+Thought process: 
+
+SR Latch
+
+A SR Latch (or set/reset-latch) component can hold a single bit output
+
+s=1 (set) sets the output to 1.
+
+r=1 (reset) sets the output to 0
+
+When both s and r are 1, the output is unchanged, i.e. the previously set or reset value is still output.
+
+Until the first set or reset signal, the output is undefined (i.e. any output is allowed).
+
+The output when both inputs are 0 is also undefined.
+
+Input	Output
+s	r	
+1	0	1
+0	1	0
+1	1	Previous output
+0	0	Not used
+
+
+The solution is a little bit tricky and I found it by chance and memory ;)
+
+The obtain the effect of memory, we need to feed back somehow the output.
+So, we couple 2 NAND games in a clever way.
+
+When s=1 r does not impact the output, so the value is SET
+
+Input	Output
+s	r	
+0	0	Not used
+1	0	1
+0	1	0
+1	1	Previous output
+
+When r=1 the output is reset.
+ 
+Input	Output
+s	r	
+0	0	Not used
+1	0	1
+0	1	0
+1	1	Previous output
