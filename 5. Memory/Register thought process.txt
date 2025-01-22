@@ -1,0 +1,8 @@
+Thought process: 
+
+Register
+
+A 2-bit DFF component works like a data flip-flop, except two bits (d1 and d0) are stored and emitted instead of one.
+As cl changes to 0 again event is the trigger to send out the stored data, then an inverter must be used to feed cl to the selector.
+
+We can just use 2 DFF in paraller each per input bit.
