@@ -1,0 +1,28 @@
+Thought process: 
+Counter
+
+A counter component increments a 16-bit number for each clock cycle.
+
+If st (store) is 1, then the input value X is used as the new counter value.
+
+If st is 0, then the previous counter value is incremented with 1.
+
+The counter output changes when cl (clock signal) changes to 0.
+
+Input	Effect
+st	cl	
+0	0	set next to output + 1
+1	0	set next to X
+output is the current output of the component. next becomes the current output when cl changes to 0.
+
+===
+We have a notion of next, so some sequential logic should be involved.
+Two options: combinatory + sequential or sequential + combinatory logic.
+In which order?
+As we have "set next to output + 1/set next to X", then the sequential element must be last in order to provide the required output on next cycle.
+This element can be just a register. 
+However, the register has st and cl inputs and if evident about cl, but what should be connected to its st(store) input?
+As we need to store the value on cl tick, then we feed cl also to st(store).
+Thus, on cl we store value in this register and on the next cl we send it to out.
+The data input of the register is selected between out+1 and X by the input st(store) of the chip.
+So we need a SELECT16 chip, and a INC16 device to prepare out+1 value to be stored to the register.
