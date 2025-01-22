@@ -1,0 +1,31 @@
+Thought process: 
+
+Data Flip-Flop
+
+The DFF (data flip-flop) component store and output one bit. The output does not update immediately when input changes. Changes happen in phases, timed by the cl (clock) signal flipping between 0 and 1:
+
+cl=0
+The input flags st and d can change in this stage.
+
+cl=1
+If st=1 when cl changes to 1, the current value of d is stored. The stored value is not yet output.
+
+cl=0
+When cl changes to 0 again, the previously stored value is output.
+
+Effect of inputs when cl=1:
+
+Input	Effect
+st	d	
+1	0	next = 0
+1	1	next = 1
+0	0	unchanged
+0	1	unchanged
+Output before the first store and clock-cycle is unspecified. Assume there will be no changes in input while cl=1.
+
+===
+As the output is delayed compared to the input store there should be 2 stages.
+
+The first stage is composed of D-latch that stores the input data when cl=1 AND st=1.
+The second stage must select between current state and the stored input data in the first stage D-latch.
+As cl changes to 0 again event is the trigger to send out the stored data, then an inverter must be used to feed cl to the selector.
