@@ -1,0 +1,26 @@
+Thought process: 
+
+Input and Output
+
+Connect a lamp and a button, so they can be accessed like a memory address.
+
+Output to device
+
+The lamp is controlled by bit 0 and 1 of X:
+
+When bit 1 is 1, the lamp should get a signal on on. When bit 0 is 1, the lamp should get a signal on off.
+
+Signals should be sent to the hardware when st (store) is 1 and cl (clock signal) is 1.
+
+Input from device
+
+The button state is shown in bit 15 of the component output.
+
+When the button is pressed, bit 15 should be 1. When it is not pressed, it should be 0.
+
+Input signals should be readable immediately
+
+===
+The data for Input and Output is exposed by the Computer through registers.
+Input data is written to a register and the Computer can read it and use it.
+In the same way, the output is exposed to external world by a register, which bits can command the device connected to the output.
