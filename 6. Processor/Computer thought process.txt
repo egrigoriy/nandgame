@@ -1,0 +1,32 @@
+Thought process: 
+
+Computer
+
+Build a computer by combining:
+
+A control unit
+Storage memory (RAM and registers)
+A program memory unit (ROM).
+A counter which keeps track of the current instruction address (called the "program counter" or PC).
+A clock unit
+The word at the PC address in the program memory is the I input to the control unit.
+
+Each clock cycle changes the program counter depending on j:
+
+If j=0, the program counter should advance with 1.
+
+If j=1, the PC should be set to the value on A.
+===
+
+The most evident part is the ROM. 
+Its Ad input must come from the COUNTER output and its output must go to the CONTROL UNIT Instruction (I) for decoding.
+COUNTER input st-store is connected to CONTOL UNIT j flag (j=1). j for JUMP!!!!
+The stored value X to the COUNTER is the  A-register value.
+COUNTER done.\
+
+CONTROL UNIT output flags a, d, *a are connected to the RAM input.
+CONTROL UNIT output R (Result) of decoded instruction is fed to X input (data to store) of the RAM.
+This allows CONTROL UNIT to signal RAM what and where to store.
+
+RAM outputs are connected to the CONTROL UNIT respective inputs A, D and *A.
+That's it!!! The computer is working!!!! 
