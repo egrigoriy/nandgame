@@ -1,0 +1,26 @@
+Thought process: 
+
+RAM
+
+Build a memory unit with two 16-bit registers which is addressable and writable using a one-bit address.
+
+Input
+ad (address) indicates which storage unit we are accessing.
+
+st (store) indicates if we want to write to the unit.
+
+If 1, the value on X is stored in the unit.
+If 0, then X is ignored.
+X (data) is a 16-bit value.
+
+cl (clock signal) synchronizes state changes. X is stored when cl=0, but emitted only when cl changes to 1.
+
+Output
+The value currently stored in the unit addressed by ad.
+
+===
+The easiest part is the reading from RAM. We can use SELECT16 to select the register to read from.
+
+When writing to RAM we also need to select the register to write to.
+This can be achived by routing the st (store) RAM input to the correct register.
+This can be achived by using a SWITCH where the select output is defined by the address input.
