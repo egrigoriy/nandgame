@@ -1,5 +1,18 @@
 Thought process: 
 
+Or
+
+An or gate output is 1 when at least one input is 1:
+
+Input	Output
+a	b	
+0	0	0	
+0	1	1	
+1	0	1	
+1	1	1	
+
+======================
+
 OR truth table:
 
 a  | b  | out

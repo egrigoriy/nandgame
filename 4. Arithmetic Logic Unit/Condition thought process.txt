@@ -1,6 +1,6 @@
 Thought process: 
 
-LogCondition
+Condition
 
 The three flags indicate three possible conditions for the number X:
 
@@ -24,6 +24,7 @@ lt	eq	gt
 1	1	0	X ≤ 0
 1	1	1	Always
 
+=======================
 We have 2 components to test the input value: IsNeg (NG) and IsZero (ZR).
 
 The simples solution is to multiply logicaly each flag with the test of the input value and add the obtained results.

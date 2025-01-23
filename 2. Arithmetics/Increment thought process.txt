@@ -1,5 +1,14 @@
 Thought process: 
 
+Increment
+
+Add 1 to a 16-bit number.
+
+
+Ignore the carry if the result is larger than 16 bits
+
+=======================
+
 Use single bit '0' and invert it to obtain logical '1'. The result is 0x1 as 16 bit number.
 Thus, this result is fed into a 16-bit adder together with the provided 16-bit input.
 

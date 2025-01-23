@@ -10,6 +10,7 @@ op1	op0	output
 1	0	X xor Y
 1	1	invert X
 
+======================
 We have 4 basic operations and we need to SELECT one of them using 2 bits (op1 and op0).
 
 As the SELECT16 element has only 1 select input and 2 data inputs, we need to build a cascade.
