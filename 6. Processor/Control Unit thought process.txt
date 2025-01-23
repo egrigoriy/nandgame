@@ -1,0 +1,28 @@
+Thought process: 
+
+Control Unit
+
+In addition to the ALU instructions, the computer should also support data instructions. 
+In a data instruction, the instruction value is directly written to the A register.
+
+Create a control unit which execute either a data- or ALU instruction, depending on the high-bit of the instruction I:
+
+Bit 15
+0	Data instruction
+1	ALU instruction
+
+ALU instruction
+For ALU instructions, the output should be as specified in the previous level.
+R is the result of the ALU operation.
+
+Data instruction
+For a data instruction, the output R should be the I input, and destination should be the A register. 
+I.e. a should be 1 and d, a*, and j flags should be 0.
+
+===
+Instruction Bit 15 selects between I (when bit-15=0) and ALU instruction (when bit-15=1).
+So, we need splitter, ALU and SELECT16.
+
+However, in case of data instuction Control Unit output a should be 1 and d, a*, and j flags should be 0.
+So bit-15 selects between ALU instruction output a, d, a*, and j flags and 0.
+This can be achived by SELECT16 and one inverter for a output. Constants 1 and 0 are also used.
