@@ -1,0 +1,34 @@
+Thought process: 
+
+Instruction
+
+I is an instruction to the ALU and condition components. The bits direct the operation as specified:
+
+Input		Output	
+Bit		Group		flag
+10		ALU			u
+9		ALU			op1
+8		ALU			op0
+7		ALU			zx
+6		ALU			sw
+5		destination	a
+4		destination	d
+3		destination	*a
+2		condition	lt
+1		condition	eq
+0		condition	gt
+
+The A, D and *A inputs are the values of the registers
+
+The X input to the ALU should be D, the Y input should be either A or *A depending on bit 12 in the instruction. If bit 12 is 0, it is A, if 1, *A.
+
+The R output is the result of the ALU operation.
+
+The j flag indicate if the ALU output conforms to the conditions specified in bit 0-2.
+
+===
+From the table above one can observe that we need at least ALU and condition elements.
+We need to use a splitter to split the bits of the instruction and connect bits 0-10 following the table to the corresponding chip.
+Condition element probe the ALU output and provide j-flag as output.
+Most connections are straight forward. However ALU Y input must be selected by bit 12 of the instruction between A and *A.
+A SELECT16 can do the job.
