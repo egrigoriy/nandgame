@@ -1,0 +1,68 @@
+Thought process: 
+
+Machine code
+
+Write a program with four instructions:
+
+0) Set the D register to 0
+1) Set the A register to 2
+2) Add 1 to the D register
+3) Jump unconditionally
+
+The outcome of executing the program should be that for each iteration, D should increment with 1.
+
+You write the program by setting the appropriate bit flags for each instruction.
+
+Click Clock Tick on the computer to execute one instruction.
+
+
+Remainder:
+The ALU (Arithmetic Logic Unit) combines the logic and arithmetic operations:
+
+Input	Output
+u	op1	op0	
+0	0	0	X and Y
+0	0	1	X or Y
+0	1	0	X xor Y
+0	1	1	invert X
+1	0	0	X + Y
+1	1	0	X - Y
+1	0	1	X + 1
+1	1	1	X - 1
+
+Two additional flags modify the operands:
+
+When the sw flag is 1, the X and Y inputs are swapped.
+When the zx flag is 1, the left operand is replaced with 0.
+This affects the operands as shown here for the example of X - Y:
+
+zx	sw	Effective operation
+0	0	X - Y
+0	1	Y - X
+1	0	0 - Y
+1	1	0 - X
+
+============
+Bit flags          
+                          
+               |    operation       | target  |  jump
+15  14 13 12 11 10  9    8   7    6  5  4   3   2   1  0
+ci  -  -  *  -  u  op1  op0  zx  sw  a  d  *a  lt  eq  gt
+
+First 3 flags are (bits 15, 14, 13):
+000 in case of A-Instruction
+111 in case of C-Instruction
+
+Bits 12 and 11 are zero in both cases.
+
+Oparation (bits 10-6) is set following the ALU operations table.
+
+Target (bits 5-3) are obvious to set.
+
+Jump bits are set to:
+- 000 in case of no jump
+- 111 in case of incoditional jump
+- otherwise intermediate combination.
+
+
+
