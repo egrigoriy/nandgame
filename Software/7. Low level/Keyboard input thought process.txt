@@ -1,0 +1,55 @@
+Thought process: 
+
+Keyboard input
+
+Write a program in assembler which write keyboard input into memory.
+
+The keyboard input is memory-mapped to address 6000.
+
+Write the first character typed at memory address 1000(hex), the second typed at 1001(hex) and so on.
+
+Note: A key will usually be held down for much longer than a clock cycle, but should only be registered as a single input until the key is released.
+
+============
+
+Use a pointer to track memory where to write next keyboard input.
+After storing the input, the pointer is incremented.
+Then wait until the keyboard is released (i.e. keyboard input is not positive)
+
+# Assembler code 
+DEFINE start 0x1000
+DEFINE kbd 0x6000
+# put pointer at address 16
+DEFINE ptr 0x0010
+
+# store start address to ptr
+A=start
+D=A
+A=ptr
+*A=D
+# listen to keyboard
+LABEL listen
+A=kbd
+D=*A
+A=listen
+D; JEQ
+# store
+A=ptr
+A=*A
+*A=D
+# increment pointer
+A=ptr
+*A=*A+1
+LABEL wait_release
+A=kbd
+D=*A
+A=wait_release
+D;JGT
+A=listen
+JMP
+
+         
+
+
+
+
