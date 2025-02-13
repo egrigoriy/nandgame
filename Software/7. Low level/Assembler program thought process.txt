@@ -1,0 +1,43 @@
+Thought process: 
+
+Assembler program
+
+Write a program in assembler which causes the lamp to blink at least three times.
+
+The lamp is memory-mapped to the address 7FFF, bits 1 and 0.
+
+Bit	Set to 1 to:
+0	Turn lamp on
+1	Turn lamp off
+The external device is only affected when a bit is changing from 0 to 1.
+
+============
+
+In top define ON and OFF state and lamp address as well.
+Then for each phase push state value through A register to D register.
+Afterwards, push lamp addres to A and write D register to address pointed by A (A*=D).
+
+DEFINE on 0x0001
+DEFINE off 0x0002
+DEFINE lamp 0x7FFF
+
+#turn on
+LABEL turn_on
+A=on
+D=A
+A=lamp
+*A=D
+#turn off
+LABEL turn_off
+A=off
+D=A
+A=lamp
+*A=D
+A=turn_on
+JMP
+
+         
+
+
+
+
