@@ -1,0 +1,56 @@
+Thought process: 
+
+Assembly Language
+
+Configure an assembler which translates from symbolic instructions into binary machine code.
+
+An assembler instruction has three parts: The destination, the calculation and an (optional) jump-condition.
+
+The destination is the register(s) which the output of the operation is written to.
+
+The calculation is the ALU operation. See the ALU level for the bit-patterns.
+
+The jump condition is the condition which will cause a jump. See the Condition level for its configuration.
+
+The arithmetic symbols + and - are self-explanatory. The symbols for bitwise logic operations are:
+
+X&Y	16-bit bitwise and
+X|Y	16-bit bitwise or
+~X	16-bit bitwise inversion
+
+Remainder:
+The ALU (Arithmetic Logic Unit) combines the logic and arithmetic operations:
+
+Input	Output
+u	op1	op0	
+0	0	0	X and Y
+0	0	1	X or Y
+0	1	0	X xor Y
+0	1	1	invert X
+1	0	0	X + Y
+1	1	0	X - Y
+1	0	1	X + 1
+1	1	1	X - 1
+
+Two additional flags modify the operands:
+
+When the sw flag is 1, the X and Y inputs are swapped.
+When the zx flag is 1, the left operand is replaced with 0.
+This affects the operands as shown here for the example of X - Y:
+
+zx	sw	Effective operation
+0	0	X - Y
+0	1	Y - X
+1	0	0 - Y
+1	1	0 - X
+
+============
+Destination and Jump bits are obvious to set.
+
+For calculation bits ALU computation table must be used.
+In fact, D=X and A=Y. In some cases zx and sw bits must be used, but its not so tricky.
+         
+
+
+
+
