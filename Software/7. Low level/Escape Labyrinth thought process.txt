@@ -1,0 +1,80 @@
+Thought process: 
+
+
+Escape Labyrinth
+
+The computer is stuck in a labyrinth on Mars. Write a program that will make it escape the labyrinth.
+
+The computer has connected wheels and a forward obstacle detector. Input/output to wheels and detector is memory-mapped on address 7FFF:
+
+Output signals to peripherals:
+
+Bit	Set to 1 to:
+2	Move forward (1 step)
+3	Turn left (90 degrees)
+4	Turn right (90 degrees)
+The movement/turn is started when a bit is changing from 0 to 1, but will take a moment to complete.
+
+Input from peripherals:
+
+Bit	When 1
+8	Obstacle detected in front
+9	Device is turning
+10	Device is moving forward
+============
+
+Use of right hand rule algorithm:
+while (not escaped) {
+	if obstacle turn left
+	else move forward
+}
+
+Important piece:
+First put movement, obstacle, etc in D trough A, then set A=io, then apply OR or AND bitwise operation to D and *A.
+
+# Assembler code 
+DEFINE io 0x7FFF
+DEFINE forward 0x0004
+DEFINE left 0x0008
+DEFINE right 0x0010
+
+DEFINE obstacle 0x0100
+DEFINE turning 0x0200
+DEFINE advancing 0x0800
+
+LABEL TURN_LEFT
+# turn left
+A=left
+D=A
+A=io
+# bitwise OR sets the target bit
+D=D|*A
+*A=D
+LABEL WAIT_UNTIL_TURNING
+# read sensor for turning
+A=turning
+D=A
+A=io
+D=D&*A
+A=WAIT_UNTIL_TURNING
+D;JGT
+LABEL ADVANCE
+# move forward
+A=forward
+D=A
+A=io
+# bitwise OR sets the target bit
+D=D|*A
+*A=D
+# read sensor for obstacle
+A=obstacle
+D=A
+A=io
+# bitwise AND masks bits but target
+D=D&*A
+# if no obstacle, then advance
+A=ADVANCE
+D;JEQ
+# else turn left
+A=TURN_LEFT
+JMP
