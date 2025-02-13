@@ -1,0 +1,14 @@
+Thought process: 
+
+Control Selector
+
+The s flag selects one of the two sets of inputs for output.
+
+Input	Output
+s	R	a	d	*a	j
+0	R0	a0 	d0 	*a0 j0
+1	R1	a1	d1	*a1	j1
+This is a simple component, but necessary for supporting different kinds of instructions in the CPU.
+
+===
+The solution is straightforward: SELECT16 for R and one SELECT for bits (a	d	*a	j)
